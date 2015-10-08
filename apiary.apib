@@ -1,0 +1,844 @@
+FORMAT: 1A
+HOST: http://polls.apiblueprint.org/
+
+# OzForex.Mobile
+
+
+## Group Mobile Information
+
+
+## App Version [/information/appversion]
+This is a temp API for the mobile killswitch that relies on a version check.
+The endpoint returns information about the latest version and allows the app to:
+- force update (lock down) 
+- check required version of the app
+- or simply provide a message to the user. (not implemented in app yet)
+### Get App Version Info [GET]
+Description of attributes: 
+- ForceUpdate: true|false, block if true else only show message if ShowMessage=true
+- ShowMessage: true|false, show a message or not
+- UpdatedOn: "2015-04-14T00:00:00.000" date time
+- Message: "Your app is out-of-date. Please update to the latest version." platform versions
+- "IOSVersion": "2.11",
+- "GooglePlayUrl": "",
+- "AndroidVersion":"2.11", api version
+- "APIVersion": "1.0.1"
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+            "ForceUpdate": true,
+            "ShowMessage": true,
+            "UpdatedOn": "Thusday, 20 August 2015",
+            "Message": "Your app is out-of-date. Please update to the latest version.",
+            "AppStoreUrl": "https://itunes.apple.com/au/app/forex-money-transfer/id499457234",
+            "IOSVersion": "3.0.0.0",
+            "GooglePlayUrl": "https://play.google.com/store/apps/details?id=au.com.ozforex",
+            "AndroidVersion": "3.0.0.1",
+            "APIVersion": "1.0.1"
+        }       
+
+## Get Currencies COPIED PARTIALLY [/mobile/information/currencies?format=json&Brand={Brand}]
+NOTE: COPIED PARTIALLY FROM RefData ON 20151001
+
+Currency List with Default Ccy Pair for New Deals screen based on Brand
++ Parameters
+    + Brand (Optional, String, `OzForex`) Name of brand]
+### Get Currency List and Default Ccy Pair pre-login [GET]
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+           "DefaultCurrencyPair": {
+            "Buy":{
+              "Code": "AUD",
+              "Name": "Australian Dollar",
+              "Symbol": "$"
+            },
+            "Sell":{
+              "Code": "USD",
+              "Name": "US Dollar",
+              "Symbol": "$"
+            }
+          },
+          "Currencies": [
+            {
+              "Code": "AED",
+              "Name": "UAE Dirham",
+              "Symbol": ""
+            },
+            {
+              "Code": "AUD",
+              "Name": "Australian Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "BHD",
+              "Name": "Bahraini Dinar",
+              "Symbol": ""
+            },
+            {
+              "Code": "BND",
+              "Name": "Brunei Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "CAD",
+              "Name": "Canadian Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "CHF",
+              "Name": "Swiss Franc",
+              "Symbol": "₣"
+            },
+            {
+              "Code": "CNY",
+              "Name": "Chinese Yuan",
+              "Symbol": "¥"
+            },
+            {
+              "Code": "CZK",
+              "Name": "Czech Koruna",
+              "Symbol": "Kč"
+            },
+            {
+              "Code": "DKK",
+              "Name": "Danish Kroner",
+              "Symbol": "kr"
+            },
+            {
+              "Code": "EUR",
+              "Name": "Euro",
+              "Symbol": "€"
+            },
+            {
+              "Code": "FJD",
+              "Name": "Fiji Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "GBP",
+              "Name": "British Pound",
+              "Symbol": "£"
+            },
+            {
+              "Code": "HKD",
+              "Name": "Hong Kong Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "HUF",
+              "Name": "Hungarian Forint",
+              "Symbol": "Ft"
+            },
+            {
+              "Code": "IDR",
+              "Name": "Indonesian Rupiah",
+              "Symbol": "Rp"
+            },
+            {
+              "Code": "ILS",
+              "Name": "Israeli New Shekel",
+              "Symbol": "₪"
+            },
+            {
+              "Code": "INR",
+              "Name": "Indian Rupee",
+              "Symbol": "₹"
+            },
+            {
+              "Code": "JPY",
+              "Name": "Japanese Yen",
+              "Symbol": "¥"
+            },
+            {
+              "Code": "KRW",
+              "Name": "Korean Won",
+              "Symbol": "₩"
+            },
+            {
+              "Code": "KWD",
+              "Name": "Kuwaiti Dinar",
+              "Symbol": ""
+            },
+            {
+              "Code": "LKR",
+              "Name": "Sri Lanka Rupee",
+              "Symbol": "₨"
+            },
+            {
+              "Code": "MAD",
+              "Name": "Moroccan Dirham",
+              "Symbol": ""
+            },
+            {
+              "Code": "MXN",
+              "Name": "Mexican Peso",
+              "Symbol": "$"
+            },
+            {
+              "Code": "MYR",
+              "Name": "Malaysian Ringgit",
+              "Symbol": "RM"
+            },
+            {
+              "Code": "NOK",
+              "Name": "Norway Kroner",
+              "Symbol": "kr"
+            },
+            {
+              "Code": "NZD",
+              "Name": "New Zealand Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "OMR",
+              "Name": "Omani Rial",
+              "Symbol": ""
+            },
+            {
+              "Code": "PEN",
+              "Name": "Peruvian Nuevo Sol",
+              "Symbol": "S/."
+            },
+            {
+              "Code": "PGK",
+              "Name": "Papua New Guinea Kina",
+              "Symbol": "K"
+            },
+            {
+              "Code": "PHP",
+              "Name": "Philippine Peso",
+              "Symbol": ""
+            },
+            {
+              "Code": "PKR",
+              "Name": "Pakistani Rupee",
+              "Symbol": "₨"
+            },
+            {
+              "Code": "PLN",
+              "Name": "Polish Zloty",
+              "Symbol": "zł"
+            },
+            {
+              "Code": "SAR",
+              "Name": "Saudi Arabian Riyal",
+              "Symbol": ""
+            },
+            {
+              "Code": "SCR",
+              "Name": "Seychelles Rupee",
+              "Symbol": ""
+            },
+            {
+              "Code": "SEK",
+              "Name": "Swedish Krona",
+              "Symbol": "kr"
+            },
+            {
+              "Code": "SGD",
+              "Name": "Singapore Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "THB",
+              "Name": "Thai Baht",
+              "Symbol": "฿"
+            },
+            {
+              "Code": "TRY",
+              "Name": "Turkish Lira",
+              "Symbol": "TL"
+            },
+            {
+              "Code": "TWD",
+              "Name": "Taiwanese New Dollar",
+              "Symbol": "NT$"
+            },
+            {
+              "Code": "USD",
+              "Name": "US Dollar",
+              "Symbol": "$"
+            },
+            {
+              "Code": "VND",
+              "Name": "Vietnamese Dong",
+              "Symbol": "₫"
+            },
+            {
+              "Code": "VUV",
+              "Name": "Vanuatu Vatu",
+              "Symbol": "Vt"
+            },
+            {
+              "Code": "XPF",
+              "Name": "Pacific Franc",
+              "Symbol": "F"
+            },
+            {
+              "Code": "ZAR",
+              "Name": "South African Rand",
+              "Symbol": "R"
+            }
+          ]
+        }
+
+## Group OAUTH2: Authorization Code Grant Flow COPIED
+- COPIED 20151001-1246
+
+The OAuth 2.0 authorization framework enables a third-party application to obtain limited 
+access to an HTTP service, either on behalf of a resource owner by orchestrating an approval
+interaction between the resource owner and the HTTP service, or by allowing the third-party
+application to obtain access on its own behalf.  This specification replaces and obsoletes
+the OAuth 1.0 protocol described in RFC 5849.
+
+The authorization code grant type is used to obtain both access
+tokens and refresh tokens and is optimized for confidential clients.
+Since this is a redirection-based flow, the client must be capable of
+interacting with the resource owner's user-agent (typically a web
+browser) and capable of receiving incoming requests (via redirection)
+from the authorization server.
+
+## Authorise [/Authorise]
+
+### Get Authorisation Code [POST]
+
++ Request (application/x-www-form-urlencoded)
+
+        {  
+           "client_id":"The prearranged client identitier",
+           "redirect_uri":"The prearranged redirect url in which the 302 will instruct the",
+           "response_type":"Value MUST be set to 'code'",
+           "scope":"OPTIONAL scope of the access request",
+           "state":"OPTIONAL An opaque value used by the client to maintain state between the request and callback",
+           "Username":"The Username or the OZForex user",
+           "Password":"The Password or the OZForex user",
+           "HashedPassword":"NOT USED BY EXTERNAL APPLICATIONS"
+        }
+        
++ Response 302
+
+    + Headers
+    
+            Location: https://redirecturi.com?code=G6wy%21IAAAAFrueOfEUEuED_Nw4IdR3RUtdbESBP7dIFEKX811exXXEQEAAAE9hMgOiq8RcboQD2Wornj09RHkKjIaNY8gwTv9ubRuUC81l1dO3LXeR4zSOb5WrgSPvzzmZcgi2rZpEY_xZYbqpAKzHQDAEDWPQMTJsUGQaSEMyVF_Ch-PhKEZuTtqSsRmvAoHMwD7K3uNUzBAR9E1TwTzg-uSPD1QDZ4YshbFVm-aTy4meCl6bJGpm0JTUro15kl1uuGOzvhenQmeerMMQq6UsFfG8vDaHO79nwhUpTL5Qg0E862M6zfXTHMbKtyMN5BPPZBwDbZ7DrNsTVfV_upcXLASkC5ephpd-BOq7PchkNpEr00KCFPnBfDuq81-H5WEUDAlUplnsdoE_9Qe3NydCsucCYK8xSXJOjrbBg&state=qwerty
+        
++ Response 401 
+
++ Response 500
+
+        {  
+           "ResponseStatus":{  
+              "ErrorCode":"Exception",
+              "Message":"The username and password must be passed",
+              "StackTrace":""
+           }
+        }
+
+## Token [/Token]
+
+### Get Token [POST]
+
++ Request (application/json)
+
+        {  
+           "grant_type":"Value MUST be set to authorization_code",
+           "code":"The authorization code received from the authorization serve",
+           "redirect_uri":"The prearranged redirect url",
+           "client_id":"The prearranged client identitier",
+           "client_secret": "the client secret provided by OFX"
+        }
+        
++ Response 200 (application/json; charset=utf-8)
+
+        {  
+           "access_token":"2YotnFZFEjr1zCsicMWpAA",
+           "token_type":"example",
+           "expires_in":3600,
+           "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"
+        }
+        
+## Token Refresh [/Refresh]
+
+### Refresh Token [POST]
+
++ Request (application/json)
+
+        {
+           "refresh_token":"The refresh token from the Token service call",
+           "grant_type":"Value MUST be set to authorization_code",
+           "code":"The authorization code received from the authorization serve",
+           "redirect_uri":"The prearranged redirect url",
+           "client_id":"The prearranged client identitier"
+        }
+        
++ Response 200 (application/json; charset=utf-8)
+
+        {  
+           "access_token":"2YotnFZFEjr1zCsicMWpAA",
+           "token_type":"example",
+           "expires_in":3600,
+           "refresh_token":"tGzv3JOkF0XG5Qx2TlKWIA"
+        }
+        
+
+## Group Mobile Auth
+
+Endpoints that provide supplementary services to authentication
+
+## Reset Password [/mobile/auth/password]
+Resets user password
+- OldPassword (String) Old password
+- Password (String) New password
+- ConfirmPassword (String) Confirm password
+    
+### Reset Password [POST]
+
+    
++ Request
+
+            { "OldPassword":"abcd123456","Password":"defg1234","ConfirmPassword":"defg1234", "BrandKey":"OFX" }
+
++ Response 200 (application/json; charset=utf-8)
+
+            {}
+            
++ Response 401
+
+            {
+              "ErrorCode": "00000",
+              "Message": "XXXXXser not authorisedXXXX",
+              "Errors": [
+                {
+                  "ErrorCode": "00000",
+                  "FieldName": "XXXX",
+                  "Message": "XXXXXser not authorisedXXXX"
+                }
+              ]
+            }
+
+## Forgot Credentials [/mobile/auth/forgot?Brand={Brand}]
+### Forgot Username-Password [POST]
++ Parameters
+    + Brand = OFX (optional, string)
+    
++ Request
+
+            { "Email":"someone@resetme.com", "Forgot":"Username|Password"  }
+
++ Response 200 (application/json; charset=utf-8)
+
+            {}
+            
++ Response 401
+
+            {
+              "ErrorCode": "00000",
+              "Message": "XXXXXser not authorisedXXXX",
+              "Errors": [
+                {
+                  "ErrorCode": "00000",
+                  "FieldName": "XXXX",
+                  "Message": "XXXXXser not authorisedXXXX"
+                }
+              ]
+            }
+
+## 4-Digit PIN SMS Verification [/mobile/auth/pin/sms?device={DeviceId}&Brand={Brand}]
+Refer to MOB-537 for SMS Verification process
+
+### Send SMS Code for 4-digit PIN [POST]
+Refer to MOB-537: Logged in User requests an SMS Code to be sent to their mobile number.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: bearer gAAAAIA1IF6QIAdRkTBwnfq00i3bnc5rIGb
+            
+    + Body
+    
+            { "MobileNumber":"+61424942635" }
+            
+            
++ Response 200 (application/json; charset=utf-8)
+    
+    + Body
+    
+            { "Success": true }
+
+### Verify SMS Code for 4-digit PIN and register the device [PUT]
+Refer to MOB-537: User provides an SMS Code to verify they received it on their device. This permits them to set their 4-digit PIN.
+
+After successful verification:
+- the SMS Code will be removed
+- the device and mobile number will be registered against the MobileUser collection
+- the user can set the 4-digit PIN in the following screen MOB-538: Set PIN 
+
+Design decision: We have kept this endpoint separate from Set 4-digit PIN as this endpoint 'registers the device'. After this, the device can do other activites like enable, 
+disable PIN if there is a future requirement to allow this on the device. Current requirement is that if the device is disabled for 4-digit PIN via the 'More' menu, then the device record is deleted. 
+
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: bearer gAAAAIA1IF6QIAdRkTBwnfq00i3bnc5rIGb
+            
+    + Body
+    
+            { "SmsCode":"098765" } 
+            
++ Response 200 (application/json; charset=utf-8)
+    
+    + Body
+    
+            { "Success": true }
+
+       
+            
+## 4-Digit PIN [/mobile/auth/pin?device={DeviceId}&Brand={Brand}]
++ Parameters
+    + DeviceId (string) - Example ADADEEWWRW14344423HJHJ
+    + Brand = OFX (optional, string)
+
+### Set 4-digit PIN and register device [POST]
+MOB:539 
+Saves the 4-digit PIN
++ Request (application/json)
+
+    + Headers
+
+            Authorization: bearer gAAAAIA1IF6QIAdRkTBwnfq00i3bnc5rIGb
+            
+    + Body
+    
+            { "PIN": "0123", "Username": "gwindows", "DeviceId":"something", "DeviceType":"ios|android" }
+            
++ Response 200 (application/json; charset=utf-8)
+
+            { }
+            
++ Response 401
+
+            {
+              "ErrorCode": "00000",
+              "Message": "XXXXXser not authorisedXXXX",
+              "Errors": [
+                {
+                  "ErrorCode": "00000",
+                  "FieldName": "XXXX",
+                  "Message": "XXXXXser not authorisedXXXX"
+                }
+              ]
+            }
+            
+### Disable 4-digit PIN and de-register device [DELETE]
+
+MOB:XXX 
+Disables the 4-digit PIN via the 'More' menu
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: bearer gAAAAIA1IF6QIAdRkTBwnfq00i3bnc5rIGb
+            
+    + Body
+    
+            { "Username": "gwindows", "DeviceId":"something" }
+            
++ Response 200 (application/json; charset=utf-8)
+
+            { "Success":true }
+            
++ Response 401
+
+            {
+              "ErrorCode": "00000",
+              "Message": "XXXXXser not authorisedXXXX",
+              "Errors": [
+                {
+                  "ErrorCode": "00000",
+                  "FieldName": "XXXX",
+                  "Message": "XXXXXser not authorisedXXXX"
+                }
+              ]
+            }
+
+
+## 4-Digit PIN [/mobile/auth/pin/validate?device={DeviceId}&Brand={Brand}]
+### Validate 4-digit PIN [POST]
+Refer to MOB-596
+Validates the 4-digit PIN from the backend to validate and unlock the device so refresh token can be used to get a new access token.
+
+Note that this API 
+- expects that the user has already logged in within the last month and their encrypted refresh token is stored on the device.
+- does not expect the user to be already logged in, so no Auth header is required. 
+- if the users refresh token has expired, it will will not log the user in, instead, will redirect user to the Login via Username/Pwd screen (MOB-559)
+
+
+What happens when a refresh token has expired?
+- user will be show message "Your credentials have expired. Please login with your username and password to continue using your PIN".
+- user will be redirected to the username/pwd login screen
+- MOB-559: Login via Username/Pwd must have a flag for 'redirectTo-4DigitLogin-View-AfterLogin' = true, which will take user to MOB-596:Login via 4-Digit Pin.
+
+
++ Request (application/json)
+            
+    + Body
+    
+            { "PIN": "0123" }
+            
++ Response 200 (application/json; charset=utf-8)
+
+    + Body
+    
+            { "Success": true }
+            
+
++ Response 401 (application/json; charset=utf-8)
+
+    + Body
+
+            {
+              "ErrorCode": "00000",
+              "Message": "XXXXXUser not authorisedXXXX",
+              "Errors": []
+            }
+
+## Group Rates and New Deals COPIED
+
+## Real Time Spot Rate Single CCY COPIED [/mobile/spotrate/{BaseCurrency}/{TermCurrency}/{Amount}{?Partner,Brand}]
+Refer to: 
++ https://jsapi.apiary.io/previews/ofxpublicsite/reference/rate-services/real-time-spot-rate-ccy-pair/real-time-spot-rate 
+  
+This service will be used to do get a real-time spot rate for a currency pair. It will be used by the following components
+
++ New Deals screen
++ Currency Converter
++ Check  Customer Rates Now (Home Screen)
++ Curency Converter (http://www.ozforex.com.au/currency-converter) [Excluding Graph]
++ Curency Charts (http://www.ozforex.com.au/forex-tools/my-fx-dashboard) [Excluding Graph]
++ Partner web site tools (Live Rate Tiles)
++ Partner web site tools (Currency Converters)
+
+### Real Time Spot Rate [GET]
+
++ Parameters
+    + BaseCurrency (string) - Example AUD
+    + TermCurrency (string) - Example GBP
+    + Amount (int) - Example 1000
+    + Partner = 13245678 (optional, string)
+    + Brand = OFX (optional, string)
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+                "interbankAsk": 1.1,
+                "interbankBid": 1.1,
+                "interbankRate": 1.1,
+                "interbankRateInverse": 0.9,
+                "customerRate": 1.1,
+                "customerRateInverse": 0.9,
+                "baseAmount": 1100,
+                "InterbankTermAmount": 1100,
+                "CustomerTermAmount": 1100,
+                "isMajor": "true"
+        }
+
++ Response 403 (application/json)
+
+        {
+            "ErrorCode": "00000",
+            "Message": "Currency AUD not supported",
+            "Errors": [
+                {
+                    "ErrorCode": "00000",
+                    "FieldName": "BasCurrency",
+                    "Message": "Currency AUD not supported"
+                }
+            ]
+        }
+        
++ Response 401 (application/json)
+
+        {
+            "ErrorCode": "00000",
+            "Message": "Throttle Limit Breached",
+            "Errors": [ ]
+        }
+        
++ Response 500 (application/json)
+
+        {
+            "ErrorCode": "00000",
+            "Message": "Uncaught Exception Handler Error",
+            "Errors": [ ]
+        }
+
+## GET User Object COPIED [/User.apiservice/UserObject?format=json&Username=Username]
+This request retrieves the user details for a specific client
+
+### GET User Object [GET]
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+          "Id": 580884,
+          "Username": "Username",
+          "SystemShortName": "OzForex",
+          "LegalShortName": "OzForex",
+          "BusinessType": "Individual",
+          "EnteredAt": "\\/Date(1428860271303+1000)\\/",
+          "IsActivated": false,
+          "UserStatus": "Dealing",
+          "LoginAttemptId": 18879402,
+          "IsPasswordExpired": false
+        }
+        
+## Group Deal
+
+## Reason for Transfer [/mobile/deal/reasons]
+This request retrieves the reason for transfer for a specific client.
+This API must be discuss more with Kenny
+
+### Reason for Transfer [GET]
+
++ Response 200 (application/json; charset=utf-8)
+
+        {
+          "Reasons": [
+            {
+              "Name": "Bill payment, expenses",
+              "Type": 1,
+              "Code": "code"
+            },
+            {
+              "Name": "Family support",
+              "Type": 1,
+              "Code": "code2"
+            },
+            {
+              "Name": "Gift",
+              "Type": 1,
+              "Code": "code3"
+            },
+            {
+              "Name": "Reason 4",
+              "Type": 1,
+              "Code": "code4"
+            },
+            {
+              "Name": "Reason 5",
+              "Type": 1,
+              "Code": "code5"
+            },
+            {
+              "Name": "Buy a plane",
+              "Type": 1,
+              "Code": "code5"
+            },
+            {
+              "Name": "Buy a plane",
+              "Type": 2,
+              "Code": "code6"
+            },
+            {
+              "Name": "Buy a plane",
+              "Type": 2,
+              "Code": "code7"
+            }
+            
+          ]
+        }
+        
+## Beneficiary Collection [/bene/]
+
+### Beneficiary list with Currency [GET/{currency}]
+This request retrieves the reason for transfer for a specific client.
+This API must be discuss more with Kenny. The response is clone from API v1.0.
+
++ Request (application/json)
+
+    + Headers
+
+            Authorization: bearer gAAAAIA1IF6QIAdRkTBwnfq00i3bnc5rIGb
+
++ Parameters
+    + currency (string) - Example AUD
+
++ Response 200 (application/json; charset=utf-8)
+
+    + Body
+    
+            [  
+               {  
+                  "Id":646558,
+                  "Name":"Jill Smith",
+                  "Country":"US",
+                  "Currency":"USD",
+                  "BankName":"Chase Bank",
+                  "Reference":"Tony Wells payment",
+                  "BranchCode":null,
+                  "BranchPrefix":null,
+                  "SwiftCode":"CHASUS33",
+                  "AccountSuffix":null,
+                  "AccountNumber":"907679495009",
+                  "BankCountryId":222,
+                  "Message":"AUD 3,212.19/USD 2,986.05 3/07/2014 Booked/Awaiting Funds ",
+                  "IsGoodForDealing":true
+               }
+            ]
+
+        
+## Group Sample
+        
+## SAMPLE [/mobile/sample]
+
+### Create a New Question [POST]
+
+You may create your own question using this action. It takes a JSON
+object containing a question and a collection of answers in the
+form of choices.
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Python",
+                "Objective-C",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /questions/2
+
+    + Body
+
+            {
+                "question": "Favourite programming language?",
+                "published_at": "2015-08-05T08:40:51.620Z",
+                "choices": [
+                    {
+                        "choice": "Swift",
+                        "votes": 0
+                    }, {
+                        "choice": "Python",
+                        "votes": 0
+                    }, {
+                        "choice": "Objective-C",
+                        "votes": 0
+                    }, {
+                        "choice": "Ruby",
+                        "votes": 0
+                    }
+                ]
+            }
